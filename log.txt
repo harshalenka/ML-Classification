@@ -1,0 +1,512 @@
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#Descision Tree
+fit <- rpart(f,data=train, method='class',parms =list(split ="information"),control=rpart.control(minsplit = 2, cp = 0.3) )
+pred.dt<-predict(fit, testAttr,type = "class")
+accuracy=sum(pred.dt == testlabel)/length(pred.dt)
+cat("Accuracy of Decission Tree:",accuracy,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#Descision Tree
+fit <- rpart(f,data=train, method='class',parms =list(split ="information"),control=rpart.control(minsplit = 55, cp = 1.5) )
+pred.dt<-predict(fit, testAttr,type = "class")
+accuracy=sum(pred.dt == testlabel)/length(pred.dt)
+cat("Accuracy of Decission Tree:",accuracy,"\n")
+}
+?neuralnet
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+# perceptron
+perceptron<- neuralnet(f,data=train,hidden=0, threshold=0.01, rep = 1 )
+perceptron$result.matrix
+pred.perceptron  <- compute(perceptron,testAttr)
+pred.perceptron<-round(pred.perceptron$net.result,digit=0)
+accuracyP=sum(pred.perceptron == testlabel)/length(pred.perceptron)
+cat("Accuracy of Perceptron:",accuracyP,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+# perceptron
+perceptron<- neuralnet(f,data=train,hidden=0, threshold=0.5, rep = 5 )
+perceptron$result.matrix
+pred.perceptron  <- compute(perceptron,testAttr)
+pred.perceptron<-round(pred.perceptron$net.result,digit=0)
+accuracyP=sum(pred.perceptron == testlabel)/length(pred.perceptron)
+cat("Accuracy of Perceptron:",accuracyP,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+# perceptron
+perceptron<- neuralnet(f,data=train,hidden=0, threshold=0.01, rep = 10 )
+perceptron$result.matrix
+pred.perceptron  <- compute(perceptron,testAttr)
+pred.perceptron<-round(pred.perceptron$net.result,digit=0)
+accuracyP=sum(pred.perceptron == testlabel)/length(pred.perceptron)
+cat("Accuracy of Perceptron:",accuracyP,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+# perceptron
+perceptron<- neuralnet(f,data=train,hidden=0, threshold=0.8, rep = 2 )
+perceptron$result.matrix
+pred.perceptron  <- compute(perceptron,testAttr)
+pred.perceptron<-round(pred.perceptron$net.result,digit=0)
+accuracyP=sum(pred.perceptron == testlabel)/length(pred.perceptron)
+cat("Accuracy of Perceptron:",accuracyP,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+# perceptron
+perceptron<- neuralnet(f,data=train,hidden=0, threshold=0.35, rep = 4 )
+perceptron$result.matrix
+pred.perceptron  <- compute(perceptron,testAttr)
+pred.perceptron<-round(pred.perceptron$net.result,digit=0)
+accuracyP=sum(pred.perceptron == testlabel)/length(pred.perceptron)
+cat("Accuracy of Perceptron:",accuracyP,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+# perceptron
+perceptron<- neuralnet(f,data=train,hidden=0, threshold=0.2, rep = 8 )
+perceptron$result.matrix
+pred.perceptron  <- compute(perceptron,testAttr)
+pred.perceptron<-round(pred.perceptron$net.result,digit=0)
+accuracyP=sum(pred.perceptron == testlabel)/length(pred.perceptron)
+cat("Accuracy of Perceptron:",accuracyP,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+# perceptron
+perceptron<- neuralnet(f,data=train,hidden=0, threshold=0.09, rep = 12 )
+perceptron$result.matrix
+pred.perceptron  <- compute(perceptron,testAttr)
+pred.perceptron<-round(pred.perceptron$net.result,digit=0)
+accuracyP=sum(pred.perceptron == testlabel)/length(pred.perceptron)
+cat("Accuracy of Perceptron:",accuracyP,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#ANN
+nn <- neuralnet(f,data=train,hidden=3, threshold=0.01, rep = 1 )
+nn$result.matrix
+#plot(nn)
+pred.ann <- compute(nn,testAttr)
+pred.ann<-round(pred.ann$net.result,digit=0)
+accuracyA=sum(pred.ann == testlabel)/length(pred.ann)
+cat("Accuracy of Perceptron:",accuracyA,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#ANN
+nn <- neuralnet(f,data=train,hidden=4, threshold=0.5, rep = 5 )
+nn$result.matrix
+#plot(nn)
+pred.ann <- compute(nn,testAttr)
+pred.ann<-round(pred.ann$net.result,digit=0)
+accuracyA=sum(pred.ann == testlabel)/length(pred.ann)
+cat("Accuracy of Perceptron:",accuracyA,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#ANN
+nn <- neuralnet(f,data=train,hidden=8, threshold=0.001, rep = 10 )
+nn$result.matrix
+#plot(nn)
+pred.ann <- compute(nn,testAttr)
+pred.ann<-round(pred.ann$net.result,digit=0)
+accuracyA=sum(pred.ann == testlabel)/length(pred.ann)
+cat("Accuracy of Perceptron:",accuracyA,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#ANN
+nn <- neuralnet(f,data=train,hidden=10, threshold=0.8, rep = 2 )
+nn$result.matrix
+#plot(nn)
+pred.ann <- compute(nn,testAttr)
+pred.ann<-round(pred.ann$net.result,digit=0)
+accuracyA=sum(pred.ann == testlabel)/length(pred.ann)
+cat("Accuracy of Perceptron:",accuracyA,"\n")
+}
+nn <- neuralnet(f,data=train,hidden=15, threshold=0.35, rep = 4 )
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#ANN
+nn <- neuralnet(f,data=train,hidden=15, threshold=0.35, rep = 4 )
+nn$result.matrix
+#plot(nn)
+pred.ann <- compute(nn,testAttr)
+pred.ann<-round(pred.ann$net.result,digit=0)
+accuracyA=sum(pred.ann == testlabel)/length(pred.ann)
+cat("Accuracy of Perceptron:",accuracyA,"\n")
+}
+nn <- neuralnet(f,data=train,hidden=7, threshold=0.2, rep = 8 )
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#ANN
+nn <- neuralnet(f,data=train,hidden=7, threshold=0.2, rep = 8 )
+nn$result.matrix
+#plot(nn)
+pred.ann <- compute(nn,testAttr)
+pred.ann<-round(pred.ann$net.result,digit=0)
+accuracyA=sum(pred.ann == testlabel)/length(pred.ann)
+cat("Accuracy of Perceptron:",accuracyA,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#ANN
+nn <- neuralnet(f,data=train,hidden=6, threshold=0.009, rep = 12 )
+nn$result.matrix
+#plot(nn)
+pred.ann <- compute(nn,testAttr)
+pred.ann<-round(pred.ann$net.result,digit=0)
+accuracyA=sum(pred.ann == testlabel)/length(pred.ann)
+cat("Accuracy of Perceptron:",accuracyA,"\n")
+}
+?svm
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=1,gamma =2, kernel="radial")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=4,gamma =6, kernel="polynomial")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=8,gamma =4, kernel="sigmoid")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=10,gamma =4, kernel="sigmoid")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+svm.model <- svm(f,data =train, cost=10,gamma =8, kernel="sigmoid")
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=10,gamma =8, kernel="sigmoid")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=10, kernel="linear")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=15, gamma=0.6, kernel="polynomial")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=7, kernel="linear")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#SVM
+#kernel linear polynomial  radial sigmoid
+svm.model <- svm(f,data =train, cost=6,gamma=0.09, kernel="polynomial")
+pred.svm <- predict(svm.model,testAttr)
+pred.svm<-round(pred.svm,digit=0)
+accuracyS=sum(pred.svm == testlabel)/length(pred.svm)
+cat("Accuracy of SVM:",accuracyS,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#naive Bayes
+byes.model <- naiveBayes(as.factor(class)~., train, laplace=2, threshold=0.001)
+pred.nb <- predict(byes.model,testAttr)
+accuracyN=sum(pred.nb == testlabel)/length(pred.nb)
+cat("Accuracy of Navie Bayes:",accuracyN,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#naive Bayes
+byes.model <- naiveBayes(as.factor(class)~., train, laplace=4, threshold=0.5)
+pred.nb <- predict(byes.model,testAttr)
+accuracyN=sum(pred.nb == testlabel)/length(pred.nb)
+cat("Accuracy of Navie Bayes:",accuracyN,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#naive Bayes
+byes.model <- naiveBayes(as.factor(class)~., train, laplace=0.2, threshold=0.1)
+pred.nb <- predict(byes.model,testAttr)
+accuracyN=sum(pred.nb == testlabel)/length(pred.nb)
+cat("Accuracy of Navie Bayes:",accuracyN,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#naive Bayes
+byes.model <- naiveBayes(as.factor(class)~., train, laplace=10, threshold=0.09)
+pred.nb <- predict(byes.model,testAttr)
+accuracyN=sum(pred.nb == testlabel)/length(pred.nb)
+cat("Accuracy of Navie Bayes:",accuracyN,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#naive Bayes
+byes.model <- naiveBayes(as.factor(class)~., train, laplace=6, threshold=0.3)
+pred.nb <- predict(byes.model,testAttr)
+accuracyN=sum(pred.nb == testlabel)/length(pred.nb)
+cat("Accuracy of Navie Bayes:",accuracyN,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#naive Bayes
+byes.model <- naiveBayes(as.factor(class)~., train, laplace=0.08, threshold=0.87)
+pred.nb <- predict(byes.model,testAttr)
+accuracyN=sum(pred.nb == testlabel)/length(pred.nb)
+cat("Accuracy of Navie Bayes:",accuracyN,"\n")
+}
+for(j in 1:2)
+{
+cat("========== round ", j,"===========", "\n")
+trainIndex	<- sample(1:nrow(transformed),	0.8 *	nrow(transformed))
+train	<- transformed[trainIndex,	]
+test	<- transformed[-trainIndex,	]
+testAttr<- test[ ,!(names(test) %in% c("class"))]
+testlabel<-test[,c("class")]
+#naive Bayes
+byes.model <- naiveBayes(as.factor(class)~., train, laplace=0.9, threshold=0.7)
+pred.nb <- predict(byes.model,testAttr)
+accuracyN=sum(pred.nb == testlabel)/length(pred.nb)
+cat("Accuracy of Navie Bayes:",accuracyN,"\n")
+}
+?train
+?perceptron
+?ann
+?Ann
+?neuralnet
+?train
+savehistory("G:/Sem1/6375.501 Machine Learning/Assignment 2/log.txt")
